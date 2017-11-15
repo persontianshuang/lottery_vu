@@ -2,7 +2,8 @@
 
 <el-card class="box-card">
   <div slot="header" class="clearfix">
-    <h3>本省实时销售情况</h3>
+    <!-- <h3>本市实时销售情况</h3> -->
+    <h3>{{ header }}</h3>
   </div>
 
 <el-table
@@ -10,13 +11,13 @@
     stripe
     style="width: 100%">
     <el-table-column
-      prop="date"
+      prop="time"
       label="统计"
       width="180">
     </el-table-column>
 
     <el-table-column
-      prop="address"
+      prop="totle"
       label="实时销售数据（元）">
     </el-table-column>
   </el-table>
@@ -30,22 +31,14 @@
 <script>
   export default {
 
-    name: 'bar1_table1',
+    name: 'live_sell_table',
+    props: {
+      header: String,
+      tableData: [Object]
+    },
+
     data: () => ({
-        tableData: [{
-          date: '总数',
-          address: '425324534455'
-        }, 
-        {
-          date: '今日',
-          address: '3144534'
-        }, 
-        {
-          date: '本月',
-          address: '5423452345'
-        }, 
         
-        ],
     })
 
   }

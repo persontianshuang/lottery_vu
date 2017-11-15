@@ -1,11 +1,11 @@
 <template>
   <el-card class="box-card">
     <div slot="header" class="clearfix">
-        <h3>本省各市实时销售情况</h3>
+        <h3>{{ header }}</h3>
     </div>
 
     <el-table
-        :data="tableData3"
+        :data="tableData"
         style="width: 100%"
         :default-sort = "{prop: 'date', order: 'descending'}"
         >
@@ -45,25 +45,15 @@
 <script>
   export default {
 
-    name: 'bar1_table3',
+    name: 'live_sell_dtails_table',
+
+    props: {
+      header: String,
+      tableData: [Object]
+    },
+
     data: () => ({
-         tableData3: [
-           {
-            city: '成都市',
-            all: '102013',
-            today: '3131',
-            this_month: '31313',
-          },
-
-          {
-            city: '绵阳市',
-            all: '9999999',
-            today: '9999',
-            this_month: '999999',
-          },
-
-
-         ]
+         
     })
 
   }

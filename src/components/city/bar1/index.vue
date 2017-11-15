@@ -1,15 +1,19 @@
 <template>
 <div>
     <live_sell_table
-    header="本省实时销售情况"
+    header="本市实时销售情况"
     :tableData="tableData"
     ></live_sell_table>
 
-    <bar1_table2></bar1_table2> 
-
     <div class="pad">
-        <live_sell_dtails_table
-        header="本省各市实时销售情况"
+      <live_sell_dtails_table
+        header="本市各一级代理商实时销售情况"
+        :tableData="tableData3"
+      ></live_sell_dtails_table>
+    </div>
+    <div class="pad">
+      <live_sell_dtails_table
+        header="本市各二级代理商实时销售情况"
         :tableData="tableData3"
       ></live_sell_dtails_table>
     </div>
@@ -21,22 +25,18 @@
 
     import live_sell_table from '../../common/live_sell_table'
     import live_sell_dtails_table from '../../common/live_sell_dtails_table'
-    import bar1_table2 from './table2'
 
 
-    name: 'province_bar1'
+    name: 'city_bar1'
 
     export default {
     components: {
         live_sell_table,
-        bar1_table2,
         live_sell_dtails_table,
     },
 
 
     data: () => ({
-        
-
         tableData: [{
           time: '总数',
           totle: '425324534455'
@@ -71,8 +71,6 @@
 
 
          ]
-
-
 
     }),
 
