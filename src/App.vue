@@ -1,14 +1,25 @@
 <template>
   <div id="app">
-    <keep-alive>
+    <maina></maina>
+    <!-- <keep-alive>
        <router-view></router-view>
-    </keep-alive>
+    </keep-alive> -->
   </div>
 </template>
 
 <script>
+
+import maina from "@/components/main/index";
+
 export default {
-  name: 'app'
+  name: 'app',
+  components: {
+      maina
+    },
+
+
+
+
 }
 </script>
 

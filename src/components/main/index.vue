@@ -23,7 +23,7 @@
       <v-spacer></v-spacer>
     
       </v-btn>
-      <v-btn icon large>
+      <v-btn icon large to='/province_bar1'>
         <v-avatar size="32px" tile>
           <img
             src="https://vuetifyjs.com/static/doc-images/logo.svg"
@@ -32,6 +32,8 @@
         </v-avatar>
       </v-btn>
     </v-toolbar>
+
+    <!-- <router-view></router-view> -->
     <main_content></main_content>
 
 
@@ -44,7 +46,7 @@
   import Toolbar from './toolbar/index'
 
   export default {
-    name: 'main',
+    name: 'maina',
 
     components: {
       'main_content': Content,

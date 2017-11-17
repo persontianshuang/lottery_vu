@@ -5,7 +5,9 @@
     :tableData="tableData"
     ></live_sell_table>
 
-    <bar1_table2></bar1_table2> 
+    <bar1_table2
+    :tableData="tableData2"
+    ></bar1_table2> 
 
     <div class="pad">
         <live_sell_dtails_table
@@ -23,6 +25,8 @@
     import live_sell_dtails_table from '../../common/live_sell_dtails_table'
     import bar1_table2 from './table2'
 
+    import { get_province } from '@/components/api/province'
+
 
     name: 'province_bar1'
 
@@ -35,46 +39,24 @@
 
 
     data: () => ({
-        
-
-        tableData: [{
-          time: '总数',
-          totle: '425324534455'
-        }, 
-        {
-          time: '今日',
-          totle: '3144534'
-        }, 
-        {
-          time: '本月',
-          totle: '5423452345'
-        }, 
-        
-        ],
-
-
-
-        tableData3: [
-           {
-            city: '成都市',
-            all: '102013',
-            today: '3131',
-            this_month: '31313',
-          },
-
-          {
-            city: '绵阳市',
-            all: '9999999',
-            today: '9999',
-            this_month: '999999',
-          },
-
-
-         ]
-
-
-
+      
+        tableData: [],
+        tableData2: [],
+        tableData3: []
     }),
+
+
+    mounted() {
+      get_province()
+      .then((response) => {
+        console.log(response.data)
+        const req = response.data
+        this.tableData = req.all
+        this.tableData2 = req.rank
+        this.tableData3 = req.city
+
+        })
+    }
 
     }
 </script>
