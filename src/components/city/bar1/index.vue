@@ -8,7 +8,7 @@
     <div class="pad">
       <live_sell_dtails_table
         header="本市各一级代理商实时销售情况"
-        :tableData="tableData3"
+        :tableData="tableData2"
       ></live_sell_dtails_table>
     </div>
     <div class="pad">
@@ -26,6 +26,8 @@
     import live_sell_table from '../../common/live_sell_table'
     import live_sell_dtails_table from '../../common/live_sell_dtails_table'
 
+    import { get_city } from '@/components/api/city'
+
 
     name: 'city_bar1'
 
@@ -37,42 +39,23 @@
 
 
     data: () => ({
-        tableData: [{
-          time: '总数',
-          totle: '425324534455'
-        }, 
-        {
-          time: '今日',
-          totle: '3144534'
-        }, 
-        {
-          time: '本月',
-          totle: '5423452345'
-        }, 
-        
-        ],
-
-
-
-        tableData3: [
-           {
-            city: '成都市',
-            all: '102013',
-            today: '3131',
-            this_month: '31313',
-          },
-
-          {
-            city: '绵阳市',
-            all: '9999999',
-            today: '9999',
-            this_month: '999999',
-          },
-
-
-         ]
+        tableData: [],
+        tableData2: [],
+        tableData3: [],
 
     }),
+
+      mounted() {
+        get_city()
+        .then((response) => {
+          console.log(response.data)
+          const req = response.data
+          this.tableData = req.all
+          this.tableData2 = req.one
+          this.tableData3 = req.two
+
+          })
+    }
 
     }
 </script>

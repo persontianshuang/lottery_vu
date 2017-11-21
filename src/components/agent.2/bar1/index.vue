@@ -15,6 +15,7 @@
 
     import live_sell_table from '../../common/live_sell_table'
     import live_sell_dtails_table from '../../common/live_sell_dtails_table'
+    import { get_agent2 } from '@/components/api/agent'
 
 
     name: 'agent2_bar1'
@@ -27,23 +28,19 @@
 
 
     data: () => ({
-       tableData: [{
-          time: '总数',
-          totle: '425324534455'
-        }, 
-        {
-          time: '今日',
-          totle: '3144534'
-        }, 
-        {
-          time: '本月',
-          totle: '5423452345'
-        }, 
-        
-        ],
+       tableData: []
 
 
     }),
+
+    mounted() {
+    get_agent2()
+    .then((response) => {
+        const req = response.data
+        this.tableData = req
+
+          })
+    }
 
     }
 </script>

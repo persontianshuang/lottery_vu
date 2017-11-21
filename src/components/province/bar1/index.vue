@@ -49,7 +49,7 @@
     mounted() {
       get_province()
       .then((response) => {
-        console.log(response.data)
+        // console.log(response.data)
         const req = response.data
         this.tableData = req.all
         this.tableData2 = req.rank

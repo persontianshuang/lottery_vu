@@ -1,12 +1,14 @@
 <template>
 <main>
     <v-content>
-      <!-- <v-container>
-<router-link to="/province_bar1">Go to Foo</router-link>
-    <router-link to="/city_bar1">Go to Bar</router-link>
-<router-view></router-view> -->
+      <v-container>
+<!-- <router-link to="/province_bar1">Go to Foo</router-link>
+    <router-link to="/city_bar1">Go to Bar</router-link> -->
 
-        <province_bar2></province_bar2>
+    <keep-alive>
+<router-view></router-view>
+</keep-alive>
+        <!-- <province_bar2></province_bar2> -->
         <!-- <province_bar1></province_bar1> -->
         <!-- <city_bar1></city_bar1> -->
         <!-- <agent1_bar1></agent1_bar1> -->

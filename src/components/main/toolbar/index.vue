@@ -4,7 +4,7 @@
         <template v-for="(item, i) in items">
           <!-- <router-link to="/foo"> -->
 
-            <v-list-tile @click="">
+            <v-list-tile @click="push(item.to)">
               <v-list-tile-action>
                 <v-icon>{{ item.icon }}</v-icon>
               </v-list-tile-action>
@@ -30,12 +30,21 @@
 
     data: () => ({
       items: [
-        { icon: 'contacts', text: '实时销售数据' },
-        { icon: 'history', text: '历史销售数据' },
-        { icon: 'content_copy', text: '下属管理' },
+        { icon: 'contacts', text: '实时销售数据',to:'/province_bar1' },
+        { icon: 'history', text: '历史销售数据',to:'/province_bar2' },
+        { icon: 'content_copy', text: '下属管理',to:'/province_bar3' },
         
       ]
     }),
+
+    methods: {
+
+      push(data) {
+        console.log(data)
+        this.$router.push(data)
+      }
+
+    }
 
   }
 </script>
