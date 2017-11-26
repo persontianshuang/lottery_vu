@@ -58,11 +58,11 @@
 
 <script>
 
-  import { search_sell_data_by_date } from '@/components/api/province'
+  import { search_sell_data_by_date } from '@/components/api/city'
 
   export default {
 
-    name: 'province_bar2',
+    name: 'city_bar2',
 
 
     data: () => ({

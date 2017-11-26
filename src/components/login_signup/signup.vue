@@ -93,6 +93,7 @@
           // })
 
           console.log('yes')
+          this.$router.push({ path: "/login" })
         }
       },
 

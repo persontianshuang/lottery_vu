@@ -21,7 +21,7 @@
     import live_sell_table from '../../common/live_sell_table'
     import live_sell_dtails_table from '../../common/live_sell_dtails_table'
 
-    import { get_agent1 } from '@/components/api/agent'
+    import { get_agent1 } from '@/components/api/agent1'
 
     name: 'agent1_bar1'
 

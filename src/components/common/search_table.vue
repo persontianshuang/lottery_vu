@@ -1,4 +1,3 @@
-
 <template>
 
 <el-card class="box-card">
@@ -17,7 +16,7 @@
     
 
     <el-date-picker
-      v-model="value2"
+      v-model="value"
       type="date"
       placeholder="截止日"
       format="yyyy 年 MM 月 dd 日"
@@ -57,29 +56,22 @@
 
 
 <script>
-
-  import { search_sell_data_by_date } from '@/components/api/province'
-
   export default {
 
-    name: 'province_bar2',
-
+    name: 'search_bar',
+    props: {
+      tableData: [Object]
+    },
 
     data: () => ({
         value1: '',
-        value2: '',
-        tableData: [],
+        value2: ''
     }),
 
     methods: {
       search () {
-        search_sell_data_by_date(this.value1,this.value2)
-          .then((response) => {
-            console.log(response.data)
-            const req = response.data
-            this.tableData = [req]
-
-            })
+        console.log(this.value1.toString())
+        console.log(this.value2)
       }
     }
 

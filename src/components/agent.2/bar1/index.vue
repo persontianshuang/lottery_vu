@@ -15,10 +15,10 @@
 
     import live_sell_table from '../../common/live_sell_table'
     import live_sell_dtails_table from '../../common/live_sell_dtails_table'
-    import { get_agent2 } from '@/components/api/agent'
+    import { get_agent2 } from '@/components/api/agent2'
 
 
-    name: 'agent2_bar1'
+    name: 'agent2_bar2'
 
     export default {
     components: {

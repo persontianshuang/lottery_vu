@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import main from '@/components/main/index'
+import maina from "@/components/main/index";
 
 import { provinceRouterMap } from './province'
 import { cityRouterMap } from './city'
@@ -12,16 +12,21 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
-    // {
-    //   path: '/',
-    //   name: 'main',
-    //   component: main
-    // },
-    ...provinceRouterMap,
+    {
+      path: '/',
+      name: 'maina',
+      component: maina,
+      redirect: '/login',
+      children: [
+        ...provinceRouterMap,
+        ...cityRouterMap,
+        ...agent1RouterMap,
+        ...agent2RouterMap,
+      ]
+    },
+
     ...userRouterMap,
-    ...cityRouterMap,
-    ...agent1RouterMap,
-    ...agent2RouterMap,
+
 
   ]
 })

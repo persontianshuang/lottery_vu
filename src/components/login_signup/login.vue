@@ -4,6 +4,14 @@
  <v-container fluid>
     <v-layout row wrap>
       <v-flex xs12 md6 offset-md3>
+
+     <v-snackbar
+      :timeout="timeout"
+      v-model="snackbar"
+    >
+      {{ text }}
+    </v-snackbar>
+
         <v-card>
           <v-toolbar color="indigo" dark>
             <v-toolbar-title>天天500</v-toolbar-title>
@@ -52,8 +60,10 @@
 
 
 <script>
+  import storage from 'good-storage'
 
   import { login } from '@/components/api/user'
+  
 
   name: 'login'
 
@@ -67,6 +77,11 @@
 
 
         valid: true,
+
+
+        snackbar: false,
+        timeout: 6000,
+        text: '手机号或密码不正确，请重新确认'
     }),
 
 
@@ -75,19 +90,41 @@
         if (this.$refs.form.validate()) {
           login(this.middle,this.password)
           .then((response) => {
-              console.log(response.data)
-              this.$router.push({ path: '/province_bar1' })
+              // console.log(response.data)
+              //登录成功后将token存储在localstorage中
+              const tk = response.data.token
+              const name = response.data.name
+              const role = response.data.role
+              if(tk){
+                storage.set('FS_token', tk); 
+                storage.set('FS_name', name); 
+                storage.set('FS_role', role); 
+                // 跳转到对应的主页
+                this.$router.push({ path: `/${role}_bar1` })
+              }
 
-                    Cookies.set('Token', response.data.token); //登录成功后将token存储在cookie之中
-      commit('SET_TOKEN', data.token);
-      commit('SET_EMAIL', email);
-
-
+              else{
+                this.snackbar = true
+              }
+              
 
             })
 
         }
       },
+      
+
+    },
+
+    mounted() {
+      console.log('1')
+      console.log(storage.get('FS_token'))
+      console.log('2')
+      if(storage.get('FS_token')){
+        const role = storage.get('FS_role')
+        this.$router.push({ path: `/${role}_bar1` })
+      }
+
 
     }
      
@@ -96,3 +133,5 @@
 
   }
 </script>
+
+

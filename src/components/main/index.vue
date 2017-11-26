@@ -23,17 +23,14 @@
       <v-spacer></v-spacer>
     
       </v-btn>
-      <v-btn icon large to='/province_bar1'>
-        <v-avatar size="32px" tile>
-          <img
-            src="https://vuetifyjs.com/static/doc-images/logo.svg"
-            alt="Vuetify"
-          >
-        </v-avatar>
-      </v-btn>
-    </v-toolbar>
+      
+      <logout></logout>
 
-    <!-- <router-view></router-view> -->
+
+    </v-toolbar>
+    <!-- <div>
+      <router-view></router-view>
+    </div> -->
     <main_content></main_content>
 
 
@@ -42,8 +39,11 @@
 </template>
 
 <script>
+  import storage from 'good-storage'
+
   import Content from './content/index'
   import Toolbar from './toolbar/index'
+  import logout from '@/components/login_signup/logout'
 
   export default {
     name: 'maina',
@@ -51,12 +51,16 @@
     components: {
       'main_content': Content,
       'main_toolbar': Toolbar,
+      logout
     },
 
     data: () => ({
       drawer: false,
 
+
     }),
+
+
 
 
 

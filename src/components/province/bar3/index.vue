@@ -13,7 +13,7 @@
     :data="tableData"
     style="width: 100%">
     <el-table-column
-      label="日期"
+      label="加入时间"
       width="180">
       <template slot-scope="scope">
         <i class="el-icon-time"></i>
@@ -22,7 +22,7 @@
     </el-table-column>
     <el-table-column
       label="姓名"
-      width="180">
+      width="130">
       <template slot-scope="scope">
           <span>王小王</span>
       </template>
@@ -50,9 +50,9 @@
 
     <el-table-column label="操作">
       <template slot-scope="scope">
-        <el-button
+        <!-- <el-button
           size="mini"
-          @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+          @click="handleEdit(scope.$index, scope.row)">编辑</el-button> -->
         <el-button
           size="mini"
           type="danger"
@@ -73,6 +73,8 @@
 
 
 <script>
+  import { manage_branch } from '@/components/api/province'
+
   export default {
 
     name: 'province_bar3',
@@ -88,7 +90,8 @@
         tableData: [{
           date: '2016-05-02',
           name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
+          address: '上海市普陀区金沙江路 1518 弄',
+          status: 1,
         }, {
           date: '2016-05-04',
           name: '王小虎',
@@ -107,11 +110,20 @@
 
 
      methods: {
-      handleEdit(index, row) {
-        console.log(index, row);
-      },
+      // handleEdit(index, row) {
+      //   console.log(index, row);
+      // },
       handleDelete(index, row) {
-        console.log(index, row);
+        // post请求携带token，如果是验证权限
+        // 通过uid找到用户改变status
+        console.log(index);
+        console.log(row);
+        manage_branch(uid,status)
+        .then((response) => {
+          // 如果成功
+          this.tableData[index].status= !this.tableData[index].status
+        })
+        
       }
     }
 
